@@ -12,7 +12,7 @@ public class Settings extends Frame implements ActionListener {
 
     // Screen resolution
     JComboBox srselector = new JComboBox<>(sresolution);
-    public static String[] sresolution = { "1920x1080", "1024x720", "640x480" };
+    public static String[] sresolution = { "2560x1440", "1920x1080", "1024x720", "640x480" };
 
     // Buttons
     Objects.Button abutton;
@@ -66,18 +66,24 @@ public class Settings extends Frame implements ActionListener {
             // Screen resolution
             int output = srselector.getSelectedIndex();
             if (output == 0) {
+                width = 2560;
+                height = 1440;
+                this.setSize(width, height);
+            }
+            
+            if (output == 1) {
                 width = 1920;
                 height = 1080;
                 this.setSize(width, height);
             }
 
-            if (output == 1) {
+            if (output == 2) {
                 width = 1024;
                 height = 720;
                 this.setSize(width, height);
             }
 
-            if (output == 2) {
+            if (output == 3) {
                 width = 640;
                 height = 480;
                 this.setSize(width, height);

@@ -1,4 +1,5 @@
 import java.awt.*;
+import javax.swing.*;
 import java.awt.event.*;
 import javax.sound.sampled.*;
 
@@ -9,6 +10,9 @@ import Objects.Objects;
 
 public class Menu extends Frame implements ActionListener {
 
+    Image image;
+    Objects.Panel bgpanel;
+
     // Buttons
     Objects.Button cbutton;
     Objects.Button nbutton;
@@ -17,9 +21,19 @@ public class Menu extends Frame implements ActionListener {
     Menu() throws LineUnavailableException, UnsupportedAudioFileException, IOException {
         this.setSize(width, height);
 
+        image = new ImageIcon("res/images/menu.png").getImage();
+
         // Panels
         Objects.Panel tpanel = new Objects.Panel(new FlowLayout(), Color.BLACK);
-        Objects.Panel bgpanel = new Objects.Panel(new BorderLayout(), Color.BLACK);
+        
+        bgpanel = new Objects.Panel(new BorderLayout(), Color.BLACK) {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(image, 0, 0, getWidth(), getHeight(), bgpanel);
+            }
+        };
+
         Objects.Panel bpanel = new Objects.Panel(new FlowLayout(), Color.BLACK);
 
         // Text
